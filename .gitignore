@@ -1,0 +1,5 @@
+.idea/
+.vscode/
+design.txt
+**/__pycache__/
+weather.db

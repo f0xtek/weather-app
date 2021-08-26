@@ -1,0 +1,56 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.form-control {
+    margin-right: 20px;
+}
+
+.row {
+    width: 90%;
+    justify-content: center;
+}
+
+.card {
+    padding: 5px;
+    border-radius: 2%;
+    margin-bottom: 10px;
+}
+
+.card-head {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-link {
+    color: lightgrey;
+}
+
+.card-link:hover {
+    text-decoration: none;
+    color: lightgrey;
+}

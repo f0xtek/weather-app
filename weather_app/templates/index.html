@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<nav class="nav">
+    <h1 class="text-center m-auto pt-4">Weather App</h1>
+</nav>
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="{{ category }} alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/" method="post">
+        <input class="form-control" type="text" name="city" id="city">
+        <input class="btn btn-primary" type="submit" value="Add City">
+    </form>
+    <div class="row">
+        {% if weather_data | length < 1 %}
+            <h4 class="text-center">No cities saved. Add one above.</h4>
+        {% else %}
+            {% for weather in weather_data %}
+                <div class="card col-md-6">
+                    <div class="card-head">
+                        <img src="https://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Weather Icon">
+                        <h3 class="card-title">{{ weather.city }}</h3>
+                        <h3 class="card-title">{{ weather.temp }}ºC</h3>
+                    </div>
+                    <h4 class="card-title text-center">{{ weather.main }}</h4>
+                    <div class="card-body">
+                        <p class="card-text">Feels like: {{ weather.feels_like }}ºC</p>
+                        <p class="card-text">Humidity: {{ weather.humidity }}%</p>
+                        <p class="card-text">Wind Speed: {{ weather.wind_speed }} mph</p>
+                    </div>
+                    <a href="/delete/{{ weather.city }}" class="card-link">Delete</a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
